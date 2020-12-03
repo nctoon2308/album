@@ -1,4 +1,5 @@
 <!-- BEGIN: main -->
+<a href="{ROW.url_add_album}" class="btn btn-success btn-md active"><i class="fa fa-edit"></i>Thêm album</a>
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
         <thead>
@@ -25,8 +26,8 @@
             </td>
             <td class="text-center text-nowrap">
                 <a href="" class="btn btn-primary btn-sm active"><i class="fa fa-edit"></i>Xem chi tiết</a>
-                <a href="{ROW.url_edit}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i>Sửa</a>
-                <a href="{ROW.url_delete}" class="btn btn-danger btn-sm delete"><i class="fa fa-edit"></i>Xoá</a>
+                <a href="{ROW.url_edit}" class="btn btn-info btn-sm active"><i class="fa fa-edit"></i>Sửa</a>
+                <a href="{ROW.url_delete}" class="btn btn-danger btn-sm delete active"><i class="fa fa-edit"></i>Xoá</a>
             </td>
         </tr>
         <!-- END: loop -->
