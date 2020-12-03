@@ -1,0 +1,1 @@
+[Thu, 03 Dec 2020 14:09:31 +0700] [localhost] [::1] [User Notice(1024): SQLSTATE[HY000] [1049] Unknown database 'test_nuke'] [FILE: /vendor/vinades/nukeviet/Core/Database.php] [LINE: 85]
