@@ -1,5 +1,18 @@
 <!-- BEGIN: main -->
-<form action="{NV_BASE_ADMINURL}index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&amp;{NV_NAME_VARIABLE}={MODULE_NAME}&amp;{NV_OP_VARIABLE}={OP}" method="post">
-    <div class="text-center"><input class="btn btn-primary" name="submit" type="submit" value="{LANG.save}" /></div>
-</form>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr class="text-center">
+            <th class="text-nowrap">Số thứ tự</th>
+            <th class="text-nowrap">Tên album</th>
+            <th class="text-nowrap">Ảnh</th>
+            <th class="text-nowrap">Mô tả</th>
+            <th class="text-nowrap">Trạng thái</th>
+            <th class="text-nowrap text-center">Chức năng</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
 <!-- END: main -->
