@@ -13,3 +13,4 @@ if (!defined('NV_ADMIN')) {
 }
 
 $submenu['config'] = $lang_module['config'];
+$submenu['list-album'] = $lang_module['list-album'];
