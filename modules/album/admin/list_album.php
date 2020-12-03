@@ -24,10 +24,8 @@ if ($nv_Request->isset_request('change_active','post,get')){
         $exe = $db->query("UPDATE `nv4_md_album` SET active_album = " . $active ." WHERE id = ".$id);
         if ($exe){
             echo $active;
-            die('OK');
         }
     }
-    die('ERR');
 }
 
 
@@ -52,6 +50,17 @@ $sql = $db->sql();
 $result = $db->query($sql);
 while ($row = $result->fetch()){
     $array_row[$row['id']] = $row;
+}
+
+
+//xoa sp
+if ($nv_Request->isset_request('action','post,get')){
+    $id = $nv_Request->get_int('id','post,get',0);
+    $checksess = $nv_Request->get_title('checksess','post,get',0);
+
+    if($id>0 && $checksess==md5($id.NV_CHECK_SESSION)){
+        $db->query("DELETE FROM `nv4_md_album` WHERE id=".$id);
+    }
 }
 
 //------------------------------
@@ -89,7 +98,7 @@ if (!empty($array_row)){
 }
 
 
-$base_url = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name.'&amp;' . NV_OP_VARIABLE . '=list';
+$base_url = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name.'&amp;' . NV_OP_VARIABLE . '=list_album';
 $generate_page=nv_generate_page($base_url,$total,$perpage,$page);
 $xtpl->assign('GENERATE_PAGE',$generate_page);
 $xtpl->parse('main.GENERATE_PAGE');

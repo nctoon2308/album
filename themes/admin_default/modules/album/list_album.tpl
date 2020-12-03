@@ -33,6 +33,9 @@
         </tbody>
     </table>
 </div>
+<!-- BEGIN: GENERATE_PAGE -->
+{GENERATE_PAGE}
+<!-- END: GENERATE_PAGE -->
 
 <script type="text/javascript">
     function nv_change_active(id) {
