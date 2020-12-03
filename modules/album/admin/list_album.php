@@ -85,6 +85,7 @@ if (!empty($array_row)){
         $row['stt'] = $i+1;
         //$row['gender'] = !empty($array_gender[$row['gender']]) ? $array_gender[$row['gender']] : 'null';
         $row['url_add_album'] = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=album' ;
+        $row['url_detail'] = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=detail_album' ;
         $row['url_delete'] = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=list_album&amp;id='.$row['id'].'&action=delete&checksess='. md5($row['id'].NV_CHECK_SESSION) ;
         $row['url_edit']   = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=album&amp;id=' . $row['id'];
         $row['active_album'] = $row['active_album'] == 1 ? 'checked=checked' : '';

@@ -25,7 +25,7 @@
                 <input onchange="nv_change_active({ROW.id})" type="checkbox" name="active" {ROW.active_album}>
             </td>
             <td class="text-center text-nowrap">
-                <a href="" class="btn btn-primary btn-sm active"><i class="fa fa-edit"></i>Xem chi tiết</a>
+                <a href="{ROW.url_detail}" class="btn btn-primary btn-sm active"><i class="fa fa-edit"></i>Xem chi tiết</a>
                 <a href="{ROW.url_edit}" class="btn btn-info btn-sm active"><i class="fa fa-edit"></i>Sửa</a>
                 <a href="{ROW.url_delete}" class="btn btn-danger btn-sm delete active"><i class="fa fa-edit"></i>Xoá</a>
             </td>
