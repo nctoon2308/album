@@ -24,6 +24,7 @@
                 <input onchange="nv_change_active({ROW.id})" type="checkbox" name="active" {ROW.active_album}>
             </td>
             <td class="text-center text-nowrap">
+                <a href="" class="btn btn-primary btn-sm active"><i class="fa fa-edit"></i>Xem chi tiết</a>
                 <a href="{ROW.url_edit}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i>Sửa</a>
                 <a href="{ROW.url_delete}" class="btn btn-danger btn-sm delete"><i class="fa fa-edit"></i>Xoá</a>
             </td>
@@ -32,4 +33,21 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    function nv_change_active(id) {
+        $.ajax({
+            url: script_name + '?' + nv_name_variable + '=' + nv_module_name
+                + '&' + nv_fc_variable
+                + '=list_album&change_active=1&id=' + id,
+            success: function (result) {
+                if (result=='ERR'){
+                    /*location.reload();*/
+                    alert('Loi k xac dinh');
+                    location.reload();
+                }
+            }
+        });
+    }
+</script>
 <!-- END: main -->

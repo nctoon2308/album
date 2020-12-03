@@ -14,6 +14,23 @@ if (!defined('NV_IS_FILE_ADMIN')) {
 
 $page_title = $lang_module['config'];
 
+
+if ($nv_Request->isset_request('change_active','post,get')){
+    $id = $nv_Request->get_int('id','post,get','');
+    $sql = "SELECT id, active_album FROM `nv4_md_album` WHERE id = " .$id;
+    $result = $db->query($sql);
+    if ($row=$result->fetch()){
+        $active = $row['active_album'] == 1 ? 2 : 1;
+        $exe = $db->query("UPDATE `nv4_md_album` SET active_album = " . $active ." WHERE id = ".$id);
+        if ($exe){
+            echo $active;
+            die('OK');
+        }
+    }
+    die('ERR');
+}
+
+
 //phan trang
 $page_title = $lang_module['main'];
 
