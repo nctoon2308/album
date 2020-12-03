@@ -5,10 +5,10 @@
 <form  enctype="multipart/form-data" action="{NV_BASE_ADMINURL}index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&amp;{NV_NAME_VARIABLE}={MODULE_NAME}&amp;{NV_OP_VARIABLE}={OP}" method="post" name="{MODULE_NAME}">
     <div class="form-group">
         <h1><b>Tạo mới album</b></h1>
-        <input type="hidden" name="id" value="">
+        <input type="hidden" name="id" value="{POST.id}">
         <div class="form-group">
             <label for="name_album">Tên album:</label>
-            <input type="text" name="name_album" class="form-control" id="name_album" value="">
+            <input type="text" name="name_album" class="form-control" id="name_album" value="{POST.name_album}">
         </div>
         <div class="form-group">
             <label for="active-album">Trạng thái album:</label>
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <label for="desc_album">Mô tả album:</label>
-            <textarea name="desc_album" class="form-control" id="desc_album"  rows="10"></textarea>
+            <textarea name="desc_album" class="form-control" id="desc_album"  rows="10">{POST.desc_album}</textarea>
         </div>
         <div class="text-center"><input class="btn btn-primary" name="submit" type="submit" value="{LANG.save}" /></div>
     </div>

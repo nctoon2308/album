@@ -53,6 +53,10 @@ if (!empty($post['submit'])) {
     if (empty($error)) {
         if ($post['id'] > 0) {
             //UPDATE
+            $sql = "UPDATE `nv4_md_album` SET `name_album`=:name_album,`image_album`=:image_album,`desc_album`=:desc_album,
+            `active_album`=:active_album,`update_at`=:update_at WHERE id =".$post['id'];
+            $s = $db->prepare($sql);
+            $s->bindValue('update_at',NV_CURRENTTIME);
         } else {
             $sql = "INSERT INTO `nv4_md_album`(`id`, `name_album`, `image_album`, `desc_album`, `active_album`, `create_at`) 
             VALUES (NULL,:name_album,:image_album,:desc_album,:active_album, :create_at)";
@@ -73,6 +77,14 @@ if (!empty($post['submit'])) {
         }
     }
 
+}elseif ($post['id']>0){
+    //nếu tồn tại id thì lấy dữ liệu ra
+    $sql = "SELECT * FROM `nv4_md_album` WHERE id=".$post['id'];
+    $post = $db->query($sql)->fetch();
+    } else{
+        $post['name_album'] = "";
+        $post['active_album'] = "";
+        $post['category_desc'] = "";
 }
 
 //------------------------------
