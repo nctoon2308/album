@@ -31,11 +31,17 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="item active">
-                <img src="/album/uploads/album/img_0615_1.jpg" alt="Los Angeles">
+                <img src="{ROW.image_album}" >
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 style="background: black; color: white">Ảnh đại diện album</h2>
+                </div>
             </div>
             <!-- BEGIN: zz -->
             <div class="item">
-                <img src="{ROW2.image}" alt="New york">
+                <img src="{ROW2.image}" >
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 style="background: black; color: white">Tên ảnh: {ROW2.name_image}</h2>
+                </div>
             </div>
             <!-- END: zz -->
         </div>
