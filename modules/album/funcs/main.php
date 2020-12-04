@@ -28,7 +28,8 @@ $page = $nv_Request->get_int('page','get',1);
 
 $db->sqlreset()
     ->select('COUNT(*)')
-    ->from($db_config['prefix'].'_'.'md_album');
+    ->from($db_config['prefix'].'_'.'md_album')
+    ->where('	active_album = 1');
 $sql = $db->sql();
 $total = $db->query($sql)->fetchColumn();
 

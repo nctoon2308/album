@@ -18,6 +18,7 @@ $post = [];
 $error = [];
 $upload_info =[];
 
+
 //xu ly anh
 if ($nv_Request->isset_request('submit', 'post') and isset($_FILES, $_FILES['image_album'], $_FILES['image_album']['tmp_name']) and is_uploaded_file($_FILES['image_album']['tmp_name'])) {
     //
@@ -31,6 +32,7 @@ if ($nv_Request->isset_request('submit', 'post') and isset($_FILES, $_FILES['ima
 }
 
 $post['id'] = $nv_Request->get_int('id','post,get','0');
+
 
 $post['name_album'] = $nv_Request->get_title('name_album','post','');
 $post['active_album'] = $nv_Request->get_int('active_album','post','1');
