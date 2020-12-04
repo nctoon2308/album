@@ -77,7 +77,7 @@ if (!empty($post['submit'])) {
         }
     }
 
-}elseif ($post['id']>0){
+}elseif ($post['album_id']>0){
     //nếu tồn tại id thì lấy dữ liệu ra
     $sql = "SELECT * FROM `nv4_md_album` WHERE id=".$post['id'];
     $post = $db->query($sql)->fetch();

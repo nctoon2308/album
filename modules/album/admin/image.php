@@ -18,6 +18,7 @@ $post = [];
 $error = [];
 $upload_info =[];
 
+
 //xu ly anh
 if ($nv_Request->isset_request('submit', 'post') and isset($_FILES, $_FILES['image'], $_FILES['image']['tmp_name']) and is_uploaded_file($_FILES['image']['tmp_name'])) {
     //
@@ -31,6 +32,7 @@ if ($nv_Request->isset_request('submit', 'post') and isset($_FILES, $_FILES['ima
 }
 
 $post['id'] = $nv_Request->get_int('id','post,get','0');
+$post['id_album'] = $nv_Request->get_int('id_album','post,get','0');
 
 $post['name_image'] = $nv_Request->get_title('name_image','post','');
 $post['image_desc'] = $nv_Request->get_title('image_desc','post','');
@@ -38,9 +40,8 @@ $post['image'] = $upload_info['basename'];
 
 $post['submit'] = $nv_Request->get_title('submit','post');
 
-/*echo "<pre>";
-print_r($post);
-echo "</pre>";*/
+
+
 if (!empty($post['submit'])) {
     if (empty($post['name_image'])) {
         $error[] = "Chưa nhập tên";
@@ -48,47 +49,36 @@ if (!empty($post['submit'])) {
     if (empty($post['image_desc'])) {
         $error[] = "Chưa nhập mô tả";
     }
-
+  echo "<pre>";
+    print_r($post);
+    echo "</pre>";
     if (empty($error)) {
-        if ($post['id'] > 0) {
-            //UPDATE
-            /*$sql = "UPDATE `nv4_md_album` SET `name_album`=:name_album,`image_album`=:image_album,`desc_album`=:desc_album,
-            `active_album`=:active_album,`update_at`=:update_at WHERE id =".$post['id'];
-            $s = $db->prepare($sql);
-            $s->bindValue('update_at',NV_CURRENTTIME);*/
-        } else {
-            /*
-             * INSERT INTO `nv4_md_image`(`id`, `name_image`, `id_album`, `image`, `image_desc`, `id_user`, `create_at`, `update_at`)
-             * VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8])
-             */
-            $sql = "INSERT INTO `nv4_md_image`(`id`, `name_image`, `id_album`, `image`, `image_desc`, `create_at`) 
-            VALUES (NULL,:name_image,:id_album,:image,:image_desc, :create_at)";
+
+            $sql = "INSERT INTO `nv4_md_image` (`id`,`create_at`,`name_image`,`image`,`image_desc`,`id_album`) 
+                    VALUES (NULL,:create_at,:name_image,:image,:image_desc,:id_album)";
+
             $s = $db->prepare($sql);
             $s->bindValue('create_at', NV_CURRENTTIME);
-        }
-        $s->bindParam('name_image', $post['name_image']);
-        $s->bindParam('image', $post['image']);
-        $s->bindParam('image_desc', $post['image_desc']);
-
+            $s->bindValue('name_image', $post['name_image']);
+            $s->bindValue('image', $post['image']);
+            $s->bindValue('image_desc', $post['image_desc']);
+            $s->bindValue('id_album', $post['id_album']);
         $exe = $s->execute();
 
         if ($exe) {
             $error[] = "OK";
         } else {
-            $error[] = "Khong insert dc";
+            $error[] = "Lỗi";
         }
     }
+    header('Location: '.NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE .
+                 '=' .$module_name. '&' . NV_OP_VARIABLE .'=image&id_album_id=' . $post['id_album']);
 
-}elseif ($post['id']>0){
+}elseif ($post['id_album']>0){
     //nếu tồn tại id thì lấy dữ liệu ra
-    $sql = "SELECT * FROM `nv4_md_album` WHERE id=".$post['id'];
+    $sql = "SELECT * FROM `nv4_md_album` WHERE id=".$post['id_album'];
     $post = $db->query($sql)->fetch();
-    } else{
-        $post['name_album'] = "";
-        $post['active_album'] = "";
-        $post['category_desc'] = "";
 }
-
 //------------------------------
 // Viết code xử lý chung vào đây
 //------------------------------
