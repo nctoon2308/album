@@ -11,4 +11,7 @@ Lúc này trong bảng Các module hệ thống sẽ hiển thị module Album, 
 
 Tìm đến 2 file csdl trong SETUP\NOTE\CSDL và import vào database của website.
 
+Cần cài layout cho site là left-main để module hoạt động tốt nhất
+
 => Lúc này đã thêm thành công module Album để quản lý các album.
+
