@@ -40,7 +40,7 @@ function nv_theme_album_main($array_data , $generate_page, $page, $perpage)
             $row['stt'] = $i+1;
             //$row['gender'] = !empty($array_gender[$row['gender']]) ? $array_gender[$row['gender']] : 'null';
             $row['url_view'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=detail&amp;id=' . $row['id'];
-            $row['url_view'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=search&amp;id=' . $row['id'];
+            $row['url_sildeshow'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=search&amp;id=' . $row['id'];
             /* die();*/
             if (!empty($row['image_album']))
                 $row['image_album'] = NV_BASE_SITEURL.NV_UPLOADS_DIR.'/'.$module_name.'/'. $row['image_album'];
