@@ -64,9 +64,9 @@ function nv_theme_album_main($array_data , $generate_page, $page, $perpage)
  * @param mixed $array_data
  * @return
  */
-function nv_theme_album_detail($array_data)
+function nv_theme_album_detail($array_data, $array_row)
 {
-    global $module_info, $lang_module, $lang_global, $op;
+    global $module_info, $lang_module, $lang_global, $op, $module_name;
 
     $xtpl = new XTemplate($op . '.tpl', NV_ROOTDIR . '/themes/' . $module_info['template'] . '/modules/' . $module_info['module_theme']);
     $xtpl->assign('LANG', $lang_module);
@@ -74,6 +74,33 @@ function nv_theme_album_detail($array_data)
 
     //------------------
     // Viết code vào đây
+
+    if (!empty($array_data)){
+        foreach ($array_data as $row){
+            if (!empty($array_row)){
+                $j=1;
+                foreach ($array_row as $row2){
+                    $row['name_image'] = $row2['name_image'];
+                    $row['image_desc'] = $row2['image_desc'];
+                    $row['stt_image'] = $j;
+                    $row['image'] = $row2['image'];
+                    if (!empty($row['image']))
+                        $row['image'] = NV_BASE_SITEURL.NV_UPLOADS_DIR.'/'.$module_name.'/'. $row['image'];
+                    $xtpl->assign('ROW2',$row);
+                    $xtpl->parse('main.loop.zz');
+                    $j++;
+                }
+            }
+
+            if (!empty($row['image_album']))
+                $row['image_album'] = NV_BASE_SITEURL.NV_UPLOADS_DIR.'/'.$module_name.'/'. $row['image_album'];
+
+            $xtpl->assign('ROW',$row);
+            $xtpl->parse('main.loop');
+            $i++;
+
+        }
+    }
     //------------------
 
     $xtpl->parse('main');

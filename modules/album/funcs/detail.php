@@ -16,12 +16,37 @@ $page_title = $module_info['site_title'];
 $key_words = $module_info['keywords'];
 
 $array_data = [];
+$array_row = [];
+
+
+$post['id'] = $nv_Request->get_int('id','post,get','0');
+
+$db->sqlreset()
+    ->select('*')
+    ->from($db_config['prefix'].'_'.'md_album')
+    ->where('id='.$post['id']);
+$sql = $db->sql();
+$result = $db->query($sql);
+
+while ($row = $result->fetch()){
+    $array_data[$row['id']] = $row;
+}
+
+$db->sqlreset()
+    ->select('*')
+    ->from($db_config['prefix'].'_'.'md_image')
+    ->where('id_album='.$post['id']);
+$sql = $db->sql();
+$result = $db->query($sql);
+while ($row = $result->fetch()){
+    $array_row[$row['id']] = $row;
+}
 
 //------------------
 // Viết code vào đây
 //------------------
 
-$contents = nv_theme_album_detail($array_data);
+$contents = nv_theme_album_detail($array_data, $array_row);
 
 include NV_ROOTDIR . '/includes/header.php';
 echo nv_site_theme($contents);
