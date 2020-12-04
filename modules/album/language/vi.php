@@ -18,6 +18,6 @@ $lang_translator['copyright'] = '@Copyright (C) 2020 VINADES.,JSC. All rights re
 $lang_translator['info'] = '';
 $lang_translator['langtype'] = 'lang_module';
 
-$lang_module['main'] = 'Trang chính';
+$lang_module['main'] = 'Danh sách album';
 $lang_module['detail'] = 'Xem chi tiết';
 $lang_module['search'] = 'Tìm kiếm';

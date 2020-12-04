@@ -18,17 +18,41 @@ if (!defined('NV_IS_MOD_ALBUM')) {
  * @param mixed $array_data
  * @return
  */
-function nv_theme_album_main($array_data)
+function nv_theme_album_main($array_data , $generate_page, $page, $perpage)
 {
-    global $module_info, $lang_module, $lang_global, $op;
+    global $module_info, $lang_module, $lang_global, $op, $module_name;
 
     $xtpl = new XTemplate($op . '.tpl', NV_ROOTDIR . '/themes/' . $module_info['template'] . '/modules/' . $module_info['module_theme']);
     $xtpl->assign('LANG', $lang_module);
     $xtpl->assign('GLANG', $lang_global);
+    $xtpl->assign('NV_BASE_SITEURL', NV_BASE_SITEURL);
+    $xtpl->assign('NV_NAME_VARIABLE', NV_NAME_VARIABLE);
+    $xtpl->assign('MODULE_NAME', $module_name);
+    $xtpl->assign('NV_OP_VARIABLE', NV_OP_VARIABLE);
+    $xtpl->assign('OP', $op);
+    /*
+     * $base_url = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name.'&amp;' . NV_OP_VARIABLE . '=main';
 
-    //------------------
-    // Viết code vào đây
-    //------------------
+     */
+    if (!empty($array_data)){
+        $i = ($page-1) * $perpage;
+        foreach ($array_data as $row){
+            $row['stt'] = $i+1;
+            //$row['gender'] = !empty($array_gender[$row['gender']]) ? $array_gender[$row['gender']] : 'null';
+            $row['url_view'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=detail&amp;id=' . $row['id'];
+            /* die();*/
+            if (!empty($row['image_album']))
+                $row['image_album'] = NV_BASE_SITEURL.NV_UPLOADS_DIR.'/'.$module_name.'/'. $row['image_album'];
+
+            $xtpl->assign('ROW',$row);
+            $xtpl->parse('main.loop');
+            $i++;
+        }
+    }
+    if ($generate_page){
+        $xtpl->assign('GENERATE_PAGE',$generate_page);
+        $xtpl->parse('main.GENERATE_PAGE');
+    }
 
     $xtpl->parse('main');
     return $xtpl->text('main');
