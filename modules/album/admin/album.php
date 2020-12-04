@@ -81,7 +81,8 @@ if (!empty($post['submit'])) {
     //nếu tồn tại id thì lấy dữ liệu ra
     $sql = "SELECT * FROM `nv4_md_album` WHERE id=".$post['id'];
     $post = $db->query($sql)->fetch();
-    } else{
+
+} else{
         $post['name_album'] = "";
         $post['active_album'] = "";
         $post['category_desc'] = "";

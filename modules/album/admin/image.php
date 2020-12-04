@@ -76,8 +76,11 @@ if (!empty($post['submit'])) {
 
 }elseif ($post['id_album']>0){
     //nếu tồn tại id thì lấy dữ liệu ra
+
     $sql = "SELECT * FROM `nv4_md_album` WHERE id=".$post['id_album'];
     $post = $db->query($sql)->fetch();
+    $post['url_add_image'] = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name. '&amp;' . NV_OP_VARIABLE .'=detail_album&amp;id='.$post['id'];
+
 }
 //------------------------------
 // Viết code xử lý chung vào đây

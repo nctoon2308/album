@@ -2,6 +2,7 @@
 <!-- BEGIN: error -->
 <div class="alert alert-warning" role="alert">{ERROR}</div>
 <!-- END: error -->
+<a href="{POST.url_add_image}" class="btn btn-success btn-md active"><i class="fa fa-edit"></i>Quay lại album {POST.name_album}</a>
 <form  enctype="multipart/form-data" action="{NV_BASE_ADMINURL}index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&amp;{NV_NAME_VARIABLE}={MODULE_NAME}&amp;{NV_OP_VARIABLE}={OP}" method="post" name="{MODULE_NAME}">
     <div class="form-group">
         <h1><b>Thêm ảnh vào album {POST.name_album}</b></h1>
