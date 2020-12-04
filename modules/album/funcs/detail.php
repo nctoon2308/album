@@ -18,6 +18,11 @@ $key_words = $module_info['keywords'];
 $array_data = [];
 $array_row = [];
 
+$array_mod_title[] = array(
+    'title' => $lang_module['main'],
+    'link' => nv_url_rewrite(NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' .$module_name.'&amp;'
+        . NV_OP_VARIABLE . '=main',true)
+);
 
 $post['id'] = $nv_Request->get_int('id','post,get','0');
 
@@ -31,6 +36,7 @@ $result = $db->query($sql);
 while ($row = $result->fetch()){
     $array_data[$row['id']] = $row;
 }
+
 
 $db->sqlreset()
     ->select('*')
