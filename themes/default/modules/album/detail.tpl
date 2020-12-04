@@ -44,8 +44,5 @@
     <!-- END: zz -->
     </tbody>
 </table>
-
-
 <!-- END: loop -->
-
 <!-- END: main -->

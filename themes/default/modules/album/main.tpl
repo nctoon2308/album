@@ -21,10 +21,13 @@
             </td>
             <td class="">{ROW.desc_album}</td>
             <td class="">
-                <a href="{ROW.url_view}" class="btn btn-success btn-md active"><i class="fa fa-edit"></i>Xem chi tiết</a>
+                <div class="row">
+                    <a href="{ROW.url_view}" class="btn btn-success btn-md active"><i class="fa fa-edit"></i>Xem chi tiết</a>
+                </div>
+                <div class="row" style="margin-top: 15px">
+                    <a href="{ROW.url_view}" class="btn btn-primary btn-md active"><i class="fa fa-edit"></i>Xem slideshow</a>
+                </div>
             </td>
-
-
         </tr>
         <!-- END: loop -->
         </tbody>
