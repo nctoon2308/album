@@ -1,7 +1,7 @@
 <!-- BEGIN: main -->
 <!-- BEGIN: loop -->
 <div class="row">
-    <div class="col-md-16">
+    <div class="col-md-24">
         <table class="table table-striped table-bordered table-hover">
             <caption>Thông tin album: {ROW.name_album}</caption>
             <tr>
@@ -23,7 +23,7 @@
         </table>
     </div>
 </div>
-
+<h1 style="text-align: center; margin-top: 20px">Các ảnh thuộc album {ROW.name_album}</h1>
 <table class="table">
     <thead class="thead-dark">
     <tr>
